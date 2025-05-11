@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% block content %}
+{% from 'bootstrap4/form.html' import render_field %}
+<div class="container mt-5">
+        <h2>Inserisci i Dati per il Foglio di Viaggio</h2>
+        <form method="POST" action="{{url_for('fviaggio')}}">
+            <div class="row">
+                <div class="col">
+
+                    <label for="qual" class="form-label">Qualifica:</label>
+                    <input type="text" class="form-control" id="qual" name="qual" required>
+                </div>
+                <div class="col">
+                    <label for="surname" class="form-label">Cognome:</label>
+                    <input type="text" class="form-control" id="surname" name="surname" required>
+                </div>
+                <div class="col">
+                    <label for="name" class="form-label">Nome:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="col">
+                    <label for="perid" class="form-label">PerId:</label>
+                    <input type="text" class="form-control" id="perid" name="perid" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="nr_fvg" class="form-label">Nr. f.v.:</label>
+                    <input type="text" class="form-control" id="nr_fvg" name="nr_fvg" required>
+                </div>
+                <div class="col">
+                    <label for="motive" class="form-label">Motivo</label>
+                    <input type="text" class="form-control" id="motive" name="motive" required>
+                </div>
+                <div class="col">
+                    <label for="mission_code" class="form-label">Codice Missione:</label>
+                    <input type="text" class="form-control" id="mission_code" name="mission_code" required>
+                </div>
+                <div class="col">
+                    <label for="officecode" class="form-label">Cod. Ufficio:</label>
+                    <input type="text" class="form-control" id="office_code" name="office_code" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="destination" class="form-label">Destinazione:</label>
+                    <input type="text" class="form-control" id="destination" name="destination" required>
+                </div>
+                <div class="col">
+                    <label for="date" class="form-label">Data Missione:</label>
+                    <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+                <div class="col">
+                    <label for="departure_time" class="form-label">Ora Servizio:</label>
+                    <input type="text" class="form-control" id="h_serv" name="h_serv" value="08.00-14.00" required>
+                </div>
+                <div class="col">
+                    <label for="data_fvg" class="form-label">Data Foglio di Viaggio:</label>
+                    <input type="date" class="form-control" id="data_fvg" name="data_fvg" required>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="row">
+                        <b>Tratta 1</b>
+                    </div>
+                    <div ckass="row">
+                        <div class="col input-group mb-3">
+                            <label for="from1" class="input-group-text">da:</label>
+                            <input type="text" class="form-control" id="from1" name="from1">
+                        </div>
+                        <div class="col input-group mb-3">
+                            <label for="to1" class="input-group-text">a:</label>
+                            <input type="text" class="form-control" id="to1" name="to1">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <b>Tratta 2</b>
+                    </div>
+                    <div ckass="row">
+                        <div class="col input-group mb-3">
+                            <label for="from2" class="input-group-text">da:</label>
+                            <input type="text" class="form-control" id="from2" name="from2">
+                        </div>
+                        <div class="col input-group mb-3">
+                            <label for="to2" class="input-group-text">a:</label>
+                            <input type="text" class="form-control" id="to2" name="to2">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <b>Tratta 3</b>
+                    </div>
+                    <div ckass="row">
+                        <div class="col input-group mb-3">
+                            <label for="from3" class="input-group-text">da:</label>
+                            <input type="text" class="form-control" id="from3" name="from3">
+                        </div>
+                        <div class="col input-group mb-3">
+                            <label for="to3" class="input-group-text">a:</label>
+                            <input type="text" class="form-control" id="to3" name="to3">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <b>Tratta 4</b>
+                    </div>
+                    <div ckass="row">
+                        <div class="col input-group mb-3">
+                            <label for="from4" class="input-group-text">da:</label>
+                            <input type="text" class="form-control" id="from4" name="from4">
+                        </div>
+                        <div class="col input-group mb-3">
+                            <label for="to4" class="input-group-text">a:</label>
+                            <input type="text" class="form-control" id="to4" name="to4">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <b>Tratta 5</b>
+                    </div>
+                    <div ckass="row">
+                        <div class="col input-group mb-3">
+                            <label for="from5" class="input-group-text">da:</label>
+                            <input type="text" class="form-control" id="from5" name="from5">
+                        </div>
+                        <div class="col input-group mb-3">
+                            <label for="to5" class="input-group-text">a:</label>
+                            <input type="text" class="form-control" id="to5" name="to5">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <b>Tratta 6</b>
+                    </div>
+                    <div ckass="row">
+                        <div class="col input-group mb-3">
+                            <label for="from6" class="input-group-text">da:</label>
+                            <input type="text" class="form-control" id="from6" name="from6">
+                        </div>
+                        <div class="col input-group mb-3">
+                            <label for="to6" class="input-group-text">a:</label>
+                            <input type="text" class="form-control" id="to6" name="to6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <b>Mensa di Servizio:</b>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="YES" id="canteen" name="canteen" checked>
+                        <label class="form-check-label" for="canteen">Presente</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="NO" id="canteen" name="canteen">
+                        <label class="form-check-label" for="canteen">Assente</label>
+                    </div>
+
+                </div>
+                <div class="col-4">
+                    <b>Alloggio di Servizio:</b>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="YES" id="lodge" name="lodge" checked>
+                        <label class="form-check-label" for="lodge">Presente</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="NO" id="lodge" name="lodge">
+                        <label class="form-check-label" for="lodge">Assente</label>
+                    </div>
+                </div>
+            </div>
+        <div class="row justify-content-end">
+            <div class="col-4 align-self-end">
+                <button type="submit" class="btn btn-primary">Genera e Scarica Modulo</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
