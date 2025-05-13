@@ -217,6 +217,51 @@ def elearning():
     # Se non è una richiesta POST, mostra il modulo 
     return render_template('elearning.html', form=form, files=filepaths)
 
+@app.route('/cstrmalattia',methods=['GET','POST'])
+def cstrmalattia():
+    form = request.form
+
+    if request.method == 'POST':
+        # Ottieni i dati dal modulo
+        mydict = {
+            'qual': request.form['qual'],
+            'surname': request.form['surname'],
+            'name': request.form['name'],
+            'perid': request.form['perid'],
+            'old_cstr': '[X]' if 'old_cstr' in request.form else '[ ]',
+            'date_old_cstr': datetime.strptime(request.form['date_old_cstr'],'%Y-%m-%d').strftime('%d-%m-%Y'),
+            'old_asp': '[X]' if 'old_asp' in request.form else '[ ]',
+            'date_old_asp': datetime.strptime(request.form['date_old_asp'],'%Y-%m-%d').strftime('%d-%m-%Y'),
+            'cstr': '[X]' if 'cstr' in request.form  else '[ ]',
+            'cstr_from': datetime.strptime(request.form['cstr_from'],'%Y-%m-%d').strftime('%d-%m-%Y'),
+            'cstr_to': datetime.strptime(request.form['cstr_to'],'%Y-%m-%d').strftime('%d-%m-%Y'),
+            'cstr_days': request.form['cstr_days'],
+            'asp': '[x]' if 'asp' in request.form else '[ ]',
+            'asp_from': datetime.strptime(request.form['asp_from'],'%Y-%m-%d').strftime('%d-%m-%Y'),
+            'asp_to': datetime.strptime(request.form['asp_to'],'%Y-%m-%d').strftime('%d-%m-%Y'),
+            'asp_days': request.form['asp_days'],
+            'address': request.form['address'],
+            'tel': request.form['tel'],
+            'date_now': datetime.now().strftime('%d-%m-%Y')
+           }
+                
+        # Carica il template Word
+        template_path = os.path.join(app.config['MODULI_FOLDER'], 'cs_malattia.docx')
+        doc = Document(template_path)
+
+        # Sostituisci i segnaposto con i dati del modulo
+        docx_replace(doc, **mydict)
+        # Salva il documento modificato 
+        output_filename = "{}_{}_{}_cstr_malattia_aspettativa_{}.docx".format(mydict['surname'], mydict['name'], mydict['perid'],mydict['date_now'])
+        output_path = os.path.join(app.config['OUTPUT_FOLDER'], output_filename)
+        doc.save(output_path)
+        
+        return redirect('/download/{}'.format(output_filename))
+    
+    # Se non è una richiesta POST, mostra il modulo
+    return render_template('cstrmalattia.html', form=form)
+
+
 @app.route('/download/<filename>')
 def download(filename):
     # Percorso completo del file da scaricare

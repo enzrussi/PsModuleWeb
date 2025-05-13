@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% from 'bootstrap4/form.html' import render_field %}
+<div class="container mt-5">
+    <h2>Inserisci i Dati per il modulo Congedo Straordinario per Malattia/Aspettativa</h2>
+
+    <form method="POST" action="{{url_for('cstrmalattia')}}" enctype="multipart/form-data">
+        <div class="row border border-success-subtle rounded border-radius-sm pb-2">
+            <div class="col">
+                <label for="qual" class="form-label">Qualifica:</label>
+                <input type="text" class="form-control" id="qual" name="qual" required>
+            </div>
+            <div class="col">
+                <label for="surname" class="form-label">Cognome:</label>
+                <input type="text" class="form-control" id="surname" name="surname" required>
+            </div>
+            <div class="col">
+                <label for="name" class="form-label">Nome:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="col">
+                <label for="perid" class="form-label">PerId:</label>
+                <input type="text" class="form-control" id="perid" name="perid" required>
+            </div>
+        </div>
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
+            
+            <div class="input-group mb-3">
+                <div class="input-group-text">
+                    <input class="form-check-input m-3" type="checkbox" value="old_cstr" id="old_cstr" name="old_cstr">
+                    <span>già in Congedo Straordinario per Malattia dal:</span>
+                </div>
+                    <input type="date" class="form-control" id="date_old_cstr" name="date_old_cstr">
+            </div>
+
+             <div class="input-group mb-3">
+                <div class="input-group-text">
+                    <input class="form-check-input m-3" type="checkbox" value="old_asp" id="old_asp" name="old_asp">
+                    <span>già in Aspettativa per Malattia dal:</span>
+                </div>
+                    <input type="date" class="form-control" id="date_old_asp" name="date_old_asp">
+            </div>
+           
+        </div>
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
+            <div class="input-group">
+                <div class="input-group-text">
+                    <input class="form-check-input m-3" type="checkbox" value="cstr" id="cstr" name="cstr">
+                    <span>Congedo Straordinario per Malattia dal:</span>
+                </div>
+                <input type="date" class="form-control" id="cstr_from" name="cstr_from">
+                <span class="input-group-text">al</span>
+                <input type="date" class="form-control" id="cstr_to" name="cstr_to">
+                <span class="input-group-text">per giorni:</span>
+                <input type="number" class="form-control" id="cstr_days" name="cstr_days" placeholder="Giorni">
+            </div>
+        </div>
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
+            <div class="input-group">
+                <div class="input-group-text">
+                    <input class="form-check-input m-3" type="checkbox" value="asp" id="asp" name="asp">
+                    <span>Aspettativa per Malattia dal:</span> 
+                </div>
+                <input type="date" class="form-control" id="asp_from" name="asp_from">
+                <span class="input-group-text">al</span>
+                <input type="date" class="form-control" id="asp_to" name="asp_to">
+                <span class="input-group-text">per giorni:</span>
+                <input type="number" class="form-control" id="asp_days" name="asp_days" placeholder="Giorni">
+            </div>
+        </div>
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm pb-2">
+            <div class="col">
+                <label for="address" class="form-label">Indirizzo:</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+            <div class="col">
+                <label for="tel" class="form-label">Telefono:</label>
+                <input type="text" class="form-control" id="tel" name="tel" required>
+            </div>
+        </div>
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2 justify-content-center">
+            <div class="col-2">
+            <button type="submit" class="btn btn-primary">Crea Modulo</button>
+            </div>
+        </div>
+{% endblock %}
