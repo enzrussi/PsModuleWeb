@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+{% from 'bootstrap4/form.html' import render_field %}
+<div class="container mt-5">
+    <h2>Inserisci i Dati per il modulo degli straordinari</h2>
+
+    <form method="POST" action="{{url_for('straordinario')}}">
+        <div class="row">
+            <div class="col">
+                <label for="qual" class="form-label">Qualifica:</label>
+                <input type="text" class="form-control" id="qual" name="qual" required>
+            </div>
+            <div class="col">
+                <label for="surname" class="form-label">Cognome:</label>
+                <input type="text" class="form-control" id="surname" name="surname" required>
+            </div>
+            <div class="col">
+                <label for="name" class="form-label">Nome:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="col">
+                <label for="perid" class="form-label">PerId:</label>
+                <input type="text" class="form-control" id="perid" name="perid" required>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <label for="datastr" class="form-label">Data Straordinario:</label>
+                <input type="date" class="form-control" id="datastr" name="datastr" required>
+            </div>
+            <div class="col">
+                <label for="working_hours" class="form-label">Orario Serivizio:</label>
+                <input type="text" class="form-control" id="working_hours" name="working_hours" value="08.00-14.00" required>
+            </div>
+            <div class="col">
+                <label for="h_for" class="form-label">Ora Inizio:</label>
+                <input type="time" class="form-control" id="h_for" name="h_for" required>
+            </div>
+            <div class="col">
+                <label for="h_to" class="form-label">Ora Fine:</label>
+                <input type="time" class="form-control" id="h_to" name="h_to" required>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <label for="motive" class="form-label">Motivazione:</label>
+                <textarea class="form-control" id="motive" name="motive" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <label for="h_str" class="form-label">Ore:</label>
+                <input type="text" id="h_str" class="form-control" name="h_str">
+            </div>
+            <div class="col">
+                <label for="h_str_nf" class="form-label">Ore Notturne/Festive:</label>
+                <input type="text" id="h_str_nf" class="form-control" name="h_str_nf">
+            </div>
+            <div class="col">
+                <label for="h_str_fn" class="form-label">Ore Festive Notturne:</label>
+                <input type="text" id="h_str_fn" class="form-control" name="h_str_fn">
+            </div>
+            <div class="col">
+                <p><b>A pagamento o compensativo</b></p>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="cash" name="cash" value="cash" checked>
+                    <label class="form-check-label" for="cash">A pagamento</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="comp" name="cash" value="comp">
+                    <label class="form-check-label" for="comp">A compensativo</label> 
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <p><b>Moduli da stampare</b></p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox"  value=1 id="mod_aut" name="mod_aut">
+                    <label class="form-check-label" for="mod_aut">Autorizzazione</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" vakue=1 id="mod_dic" name="mod_dic">
+                    <label class="form-check-label" for="mod_dic">Dichiarazione</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value=1 id="mod_rat" name="mod_rat">
+                    <label class="form-check-label" for="mod_rat">Ratifica</label>
+                </div>
+            </div>
+            <div class="col">
+                 <button type="submit" class="btn btn-primary">Compila e scarica i moduli</button>
+            </div>
+            <div class="col">
+                <p><b>Seleziona i file da scaricare:</b></p>
+                    <ul>
+                        {% for file in files %}
+                        <li><a href="{{ url_for('download', filename=file.filename) }}">{{ file.display_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+            </div>
+        </div>
+
+
+    </form>
+
+{% endblock %}

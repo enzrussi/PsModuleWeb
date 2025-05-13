@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% from 'bootstrap4/form.html' import render_field %}
+
+
+<div class="container mt-5">
+    <h2>Inserisci i Dati per il modulo E-Learning</h2>
+
+    <form method="POST" action="{{url_for('elearning')}}">
+        <div class="row border border-success-subtle rounded border-radius-sm pb-2">
+            <div class="col">
+                <label for="qual" class="form-label">Qualifica:</label>
+                <input type="text" class="form-control" id="qual" name="qual" required>
+            </div>
+            <div class="col">
+                <label for="surname" class="form-label">Cognome:</label>
+                <input type="text" class="form-control" id="surname" name="surname" required>
+            </div>
+            <div class="col">
+                <label for="name" class="form-label">Nome:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="col">
+                <label for="perid" class="form-label">PerId:</label>
+                <input type="text" class="form-control" id="perid" name="perid" required>
+            </div>
+        </div>
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm pb-2">
+            <div class="col">
+                <label for="type" class="form-label">Tipo:</label>
+                <select class="form-select" id="type" name="type" required>
+                    <option value="" disabled selected>Seleziona il tipo</option>
+                    <option value="Interesse Generale">Interesse Generale</option>
+                    <option value="Tematiche di Settore">Tematiche di Settore</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="nr_day" class="form-label">Giornata:</label>
+                <select class="form-select" id="nr_day" name="nr_day" required>
+                    <option value="" disabled selected>Seleziona la Giornata</option>
+                    <option value="1">1^ Giornata</option>
+                    <option value="2">2^ Giornata</option>
+                    <option value="3">3^ Giornata</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="date_agg" class="form-label">Data Aggiornamento:</label>
+                <input type="date" class="form-control" id="date_agg" name="date_agg" required>
+            </div>
+            <div class="col">
+                <label for="h_agg" class="form-label">Orario Aggiornamento:</label>
+                <input type="text"  class="form-control" id="h_agg" name="h_agg" value="08.00-14.00" required>
+            </div>
+            <div class="col">
+                <label for="data_old_agg" class="form-label">Programmato per il:</label>
+                <input type="date" class="form-control" id="data_old_agg" name="data_old_agg" required>
+            </div>
+        </div>
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm pb-2">
+            <div class="col">
+                <label for="module" class="form-label">Moduli:</label>
+                <input type="text" class="form-control" id="module" name="module" required>     
+            </div>
+        </div>
+        <div class="row mt-3">
+           
+            <div class="col-4 border border-success-subtle rounded border-radius-sm p-2">
+                <lable for="home" class="form-label fw-bold">Modalità di fruizione:</lable>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="home" name="home" value="home">
+                    <label class="form-check-label" for="home">a Domicilio</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="office" name="home" value="office">
+                    <label class="form-check-label" for="check2">in Ufficio</label>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="row border border-success-subtle rounded border-radius-sm p-2"">
+                <label for="address" class="col-sm-2 col-form-label">Indirizzo:</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="address" name="address">
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-4 border border-success-subtle rounded border-radius-sm p-2">
+                <label class="form-label fw-bold">Modulli da creare:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="auth" name="auth" value="auth">
+                    <label class="form-check-label" for="auth">Autorizzazione</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="decl" name="decl" value="decl">
+                    <label class="form-check-label" for="decl">Dichiarazione</label>
+                </div>
+            </div>
+            <div class="col-8 border border-success-subtle rounded border-radius-sm p-2">
+                <label class="form-label fw-bold">Moduli da Scaricare:</label>
+                <ul class="list-group">
+                    {% for file in files %}
+                        <li class="list-group-item">
+                            <a href="{{ url_for('download', filename=file.filename) }}">{{ file.display_name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-2">
+                <button type="submit" class="btn btn-primary mt-3">Crea i Moduli</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
