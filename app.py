@@ -261,6 +261,40 @@ def cstrmalattia():
     # Se non è una richiesta POST, mostra il modulo
     return render_template('cstrmalattia.html', form=form)
 
+@app.route('/dct',methods=['GET','POST'])
+def dct():
+    form = request.form
+
+    if request.method == 'POST':
+        # Ottieni i dati dal modulo
+        mydict = {
+            'qual': request.form['qual'],
+            'surname': request.form['surname'],
+            'name': request.form['name'],
+            'perid': request.form['perid'],
+            'dec': request.form['dec'],
+            'date': datetime.strptime(request.form['date'],'%Y-%m-%d').strftime('%d-%m-%Y'),
+            'reason': request.form['reason'],
+            'shift_to': request.form['shift_to'],
+            'shift_from': request.form['shift_from'],
+            'data_now': datetime.now().strftime('%d-%m-%Y')
+           }
+                
+        # Carica il template Word
+        template_path = os.path.join(app.config['MODULI_FOLDER'], 'cambio_turno.docx')
+        doc = Document(template_path)
+
+        # Sostituisci i segnaposto con i dati del modulo
+        docx_replace(doc, **mydict)
+        # Salva il documento modificato 
+        output_filename = "{}_{}_{}_decreto_cambio_turno_{}.docx".format(mydict['surname'], mydict['name'], mydict['perid'],mydict['date'])
+        output_path = os.path.join(app.config['OUTPUT_FOLDER'], output_filename)
+        doc.save(output_path)
+        
+        return redirect('/download/{}'.format(output_filename))
+    
+    # Se non è una richiesta POST, mostra il modulo
+    return render_template('dct.html', form=form)
 
 @app.route('/download/<filename>')
 def download(filename):

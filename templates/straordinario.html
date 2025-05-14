@@ -8,7 +8,7 @@
     <h2>Inserisci i Dati per il modulo degli straordinari</h2>
 
     <form method="POST" action="{{url_for('straordinario')}}">
-        <div class="row">
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
             <div class="col">
                 <label for="qual" class="form-label">Qualifica:</label>
                 <input type="text" class="form-control" id="qual" name="qual" required>
@@ -26,7 +26,7 @@
                 <input type="text" class="form-control" id="perid" name="perid" required>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
             <div class="col">
                 <label for="datastr" class="form-label">Data Straordinario:</label>
                 <input type="date" class="form-control" id="datastr" name="datastr" required>
@@ -44,13 +44,13 @@
                 <input type="time" class="form-control" id="h_to" name="h_to" required>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
             <div class="col">
                 <label for="motive" class="form-label">Motivazione:</label>
                 <textarea class="form-control" id="motive" name="motive" rows="3"></textarea>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
             <div class="col">
                 <label for="h_str" class="form-label">Ore:</label>
                 <input type="text" id="h_str" class="form-control" name="h_str">
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
             <div class="col">
                 <p><b>Moduli da stampare</b></p>
                 <div class="form-check">

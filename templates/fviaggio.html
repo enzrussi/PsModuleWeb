@@ -4,7 +4,7 @@
 <div class="container mt-5">
         <h2>Inserisci i Dati per il Foglio di Viaggio</h2>
         <form method="POST" action="{{url_for('fviaggio')}}">
-            <div class="row">
+            <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
                 <div class="col">
 
                     <label for="qual" class="form-label">Qualifica:</label>
@@ -23,7 +23,7 @@
                     <input type="text" class="form-control" id="perid" name="perid" required>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
                 <div class="col mb-3">
                     <label for="nr_fvg" class="form-label">Nr. f.v.:</label>
                     <input type="text" class="form-control" id="nr_fvg" name="nr_fvg" required>
@@ -41,7 +41,7 @@
                     <input type="text" class="form-control" id="office_code" name="office_code" required>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
                 <div class="col">
                     <label for="destination" class="form-label">Destinazione:</label>
                     <input type="text" class="form-control" id="destination" name="destination" required>
@@ -57,8 +57,9 @@
                 <div class="col">
                     <label for="data_fvg" class="form-label">Data Foglio di Viaggio:</label>
                     <input type="date" class="form-control" id="data_fvg" name="data_fvg" required>
+                </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-3 mt-3 border border-success-subtle rounded border-radius-sm p-2">
                 <div class="col">
                     <div class="row">
                         <b>Tratta 1</b>
@@ -150,7 +151,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
                 <div class="col-4">
                     <b>Mensa di Servizio:</b>
                     <div class="form-check">
@@ -175,7 +176,7 @@
                     </div>
                 </div>
             </div>
-        <div class="row justify-content-end">
+        <div class="row justify-content-end mt-3 border border-success-subtle rounded border-radius-sm p-2">
             <div class="col-4 align-self-end">
                 <button type="submit" class="btn btn-primary">Genera e Scarica Modulo</button>
             </div>

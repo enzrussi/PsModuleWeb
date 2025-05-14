@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% from 'bootstrap4/form.html' import render_field %}
+<div class="container mt-5">
+    <h2>Inserisci i Dati per il Foglio di Viaggio</h2>
+
+    <form method="POST" action="{{url_for('dct')}}">
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
+            <div class="col">
+                <label for="qual" class="form-label">Qualifica:</label>
+                <input type="text" class="form-control" id="qual" name="qual" required>
+            </div>
+            <div class="col">
+                <label for="surname" class="form-label">Cognome:</label>
+                <input type="text" class="form-control" id="surname" name="surname" required>
+            </div>
+            <div class="col">
+                <label for="name" class="form-label">Nome:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="col">
+                <label for="perid" class="form-label">PerId:</label>
+                <input type="text" class="form-control" id="perid" name="perid" required>   
+            </div>
+        </div>
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
+            <div class="col">
+                <label for="date" class="form-label">Data Cambio Turno:</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="col">
+                <label for="shift_from" class="form-label">da Orario:</label>
+                <input type="text" class="form-control" id="shift_from" name="shift_from" required>
+            </div>
+            <div class="col">
+                <label for="shift_to" class="form-label">a Orario:</label>
+                <input type="text" class="form-control" id="shift_to" name="shift_to" required>
+            </div>
+        </div>
+        <div class="row mt-3 border border-success-subtle rounded border-radius-sm p-2">
+            <div class="col">
+                <label for="reason" class="form-label">Motivo:</label>
+                <input type="text" class="form-control" id="reason" name="reason" required>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-4 mt-3 border border-success-subtle rounded border-radius-sm p-2">
+                <label for="dec" class="form-label">Decretatore:</label>
+                <input type="text" class="form-control" id="dec" name="dec">
+                <button type="submit" class="btn btn-primary mt-3">Crea Modulo</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
