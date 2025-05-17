@@ -313,3 +313,6 @@ def download(filename):
 
     # Invia il file come download
     return response 
+
+if __name__ == '__main__':
+    app.run()
